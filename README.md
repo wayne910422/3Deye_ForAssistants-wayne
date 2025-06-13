@@ -13,6 +13,58 @@
 #### 我們認為沒有資訊欄的影片太多了，在後續的訓練模型，會有資料稀疏的問題，所以目前訓練一個classfiler 2分類的模型 去做 Anterior / Posterior 的分類
 ![image](https://github.com/user-attachments/assets/69eba28b-b768-4b57-9bdb-bb87dc5e0010)
 
-#### 目前classfiler模型的相關參數
-![image](https://github.com/user-attachments/assets/8b176e41-4fdb-4fe5-8136-72096b0aeb88)
+![classifier prediction result](https://github.com/user-attachments/assets/69eba28b-b768-4b57-9bdb-bb87dc5e0010)
+
+---
+
+## Classifier 模型參數（ResNet50）
+
+![training config](https://github.com/user-attachments/assets/8b176e41-4fdb-4fe5-8136-72096b0aeb88)
+
+### 訓練參數配置
+
+#### 資料處理參數
+- `IMAGE_SIZE`: (448, 448)
+- `BATCH_SIZE`: 32
+- `NUM_WORKERS`: 10
+
+#### 模型設定
+- `MODEL`: ResNet50（使用預訓練權重）
+- `NUM_CLASSES`: 2（Anterior=0, Posterior=1）
+- `PRETRAINED`: True
+
+#### 訓練參數
+- `EPOCHS`: 30
+- `LEARNING_RATE`: 1e-4
+- `OPTIMIZER`: Adam
+- `LOSS_FUNCTION`: CrossEntropyLoss
+- `EARLY_STOPPING_PATIENCE`: 5
+
+#### 交叉驗證
+- `K_FOLDS`: 5
+- `SHUFFLE`: True
+- `RANDOM_SEED`: 42
+
+#### 資料增強（訓練時）
+- `RandomHorizontalFlip`
+- `RandomRotation`: ±10度
+- `ColorJitter`:
+  - brightness=0.2
+  - contrast=0.2
+  - saturation=0.2
+- `Normalization`:
+  - mean=[0.485, 0.456, 0.406]
+  - std=[0.229, 0.224, 0.225]
+
+#### 模型表現
+- `F1-score`: **0.9924**
+
+
+##  後續
+
+- 有分好的  Anterior / Posterior ， 開始研究如何利用 cv 去辨識 眼球深度
+- 目前有看到大腸鏡深度的相關實驗正在研究 
+  
+
+---
 
