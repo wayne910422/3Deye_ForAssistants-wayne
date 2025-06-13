@@ -12,6 +12,7 @@
 
 #### 我們認為沒有資訊欄的影片太多了，在後續的訓練模型，會有資料稀疏的問題，所以目前訓練一個classfiler 2分類的模型 去做 Anterior / Posterior 的分類
 ![image](https://github.com/user-attachments/assets/69eba28b-b768-4b57-9bdb-bb87dc5e0010)
+
 #### 目前classfiler模型的相關參數
 ![image](https://github.com/user-attachments/assets/8b176e41-4fdb-4fe5-8136-72096b0aeb88)
 
